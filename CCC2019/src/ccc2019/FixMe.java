@@ -1,15 +1,24 @@
 //This should be able to solve J3 as seen in Instructions.pdf.
 package ccc2019;
 
-//@author SPH_SHSM
+import java.util.InputMismatchException;
 import java.util.Scanner;
+//@author SPH_SHSM
 
 public class FixMe {
 
 	public static void main(String[] args) {
 		Scanner in = new Scanner(System.in);
 //Read in a number
-		int lines = in.nextInt();
+		int lines = 0;
+		do {
+			try {
+				lines = in.nextInt();
+			} catch (InputMismatchException e) {
+				System.out.println("That is not a number");
+				in.nextLine();
+			}
+		} while (lines < 1);
 		in.nextLine();
 		String output = "";
 		// Loop through the lines
@@ -17,7 +26,7 @@ public class FixMe {
 			// Read in a string
 			String input = in.nextLine();
 			// Loop through the characters
-			
+
 			char currentChar = 'a';
 			int currentCount = 0;
 			char previousChar;
@@ -48,10 +57,10 @@ public class FixMe {
 						currentCount = 1;
 					}
 				}
-					// If we're on the last character
-					if (j == input.length() - 1) {
-						// add the count to the output
-						output += currentCount + " " + currentChar + " ";
+				// If we're on the last character
+				if (j == input.length() - 1) {
+					// add the count to the output
+					output += currentCount + " " + currentChar + " ";
 				}
 			}
 		}
